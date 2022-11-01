@@ -10,8 +10,10 @@
   <body>
     <div class="block">
       <div class="control">
-        <input class="field" type="field" placeholder="Введи задачу" />
-        <button class="add" type="button">+</button>
+        <form action="#" class="todo-form">
+          <input class="field" type="field" placeholder="Добавьте задачу" required />
+          <button class="add" type="submit">+</button>
+        </form>
       </div>
       <div class="list">
         <!-- работает не так, как надо, лучше прописать сразу в js, либо через toggle 

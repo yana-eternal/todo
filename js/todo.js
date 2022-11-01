@@ -5,6 +5,8 @@ const field = document.querySelector('.field');
 const button = document.querySelector('.add');
 const list = document.querySelector('.list');
 const checkbox = document.querySelector('.checkbox')
+const form = document.querySelector('.todo-form');
+
 
 // база //
 // создаем функцию, создающую таски //
@@ -24,6 +26,9 @@ function createTask(value) {
     return task;
 }
 // создаем функцию, добавляющую таски //
+// нужно для required //
+form.onsubmit = addTask;
+
 function addTask () {
 
     if (field.classList.contains('field')) {
@@ -34,6 +39,7 @@ function addTask () {
 }
 // complete task //
 function completeTask(evt) {
+    
     const target = evt.target;
     if( target.checked ) {
         target.parentElement.classList.add('success');
@@ -44,7 +50,7 @@ function completeTask(evt) {
 
 // обработчики //
 // eventLister //
-button.addEventListener('click', addTask) 
+button.addEventListener('submit', addTask) 
 
 
 
