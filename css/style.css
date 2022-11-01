@@ -59,6 +59,9 @@ body {
     background-color:rgb(193, 132, 231, 69);
     border: none;
     color: #fff;
+    box-shadow:
+    0.4px 8.3px 10px rgba(0, 0, 0, 0.102),
+   3px 66px 80px rgba(0, 0, 0, 0.24);
 }
 .todo-priority:hover {
     opacity: 80%;
