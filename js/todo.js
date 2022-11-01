@@ -27,16 +27,18 @@ function createTask(value) {
     return task;
 }
 // создаем функцию, добавляющую таски //
-// нужно для required //
+// нужно для required и переключения класса задачи//
 form.onsubmit = addTask;
 
 function addTask () {
-
-    if (field.classList.contains('field')) {
-        const newTask = createTask(field.value);
+    const newTask = createTask(field.value);
+    if (priority.classList.contains('is-important')) {
+        newTask.classList.add('is-important');
         list.appendChild(newTask);
         field.value = '';
-    }
+      }
+      list.appendChild(newTask);
+      field.value = '';
 }
 // complete task //
 function completeTask(evt) {

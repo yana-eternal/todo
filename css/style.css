@@ -1,3 +1,26 @@
+body {
+    background: rgb(6,0,102);
+    background: linear-gradient(90deg, rgba(6,0,102,1) 0%, rgba(143,84,181,1) 35%, rgba(72,134,192,1) 79%, rgba(104,199,218,1) 100%);
+}
+
+.block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.control + * {
+    margin-top: 20px;
+}
+.list {
+    margin-top: 1px;
+    padding: 20px 16px;
+    color: #5c8bf0;
+}
+.list .is-important {
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #f98f2d;
+}
 .new-task {
     border: 1px solid black;
     margin-bottom: 5px;
