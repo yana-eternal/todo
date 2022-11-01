@@ -6,6 +6,7 @@ const button = document.querySelector('.add');
 const list = document.querySelector('.list');
 const checkbox = document.querySelector('.checkbox')
 const form = document.querySelector('.todo-form');
+const priority = document.querySelector('.todo-priority');
 
 
 // база //
@@ -52,6 +53,13 @@ function completeTask(evt) {
 // eventLister //
 button.addEventListener('submit', addTask) 
 
-
-
+// клас задачи //
+priority.onclick = function () {
+  priority.classList.toggle('is-important');
+  if (priority.classList.contains('is-important')) {
+    priority.textContent = 'Важная задача';
+  } else {
+    priority.textContent = 'Обычная задача';
+  }
+};
 
