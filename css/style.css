@@ -17,6 +17,7 @@ body {
 
 /* список */
 .list {
+    align-items: center;
     font-weight: bold;
     color: whitesmoke;
 }
