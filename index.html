@@ -4,23 +4,35 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/style.css" />
+    <!-- <link rel="stylesheet" href="css/style.css" /> -->
+    <!-- <link rel="stylesheet" href="css/style-new.css" /> -->
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/reset.css" />
     <title>TODO</title>
   </head>
   <body>
-    <div class="block">
-      <div class="control">
-        <form action="#" class="todo-form">
-          <input class="field" type="text" maxlength="40" placeholder="Добавьте задачу" required />
-          <button class="add btn" type="submit">+</button>
-          <button type="button" class="todo-priority is-important btn">Важная задача</button>
-        </form>
+    <main>
+      <div class="block">
+        <div class="container">
+          <div class="control">
+            <form action="#" class="todo-form">
+              <div class="text-field">
+                <input class="field text-field__input" type="text" placeholder="Добавьте задачу" required />
+                <button class="add btn" type="submit">+</button>
+                <button type="button" class="todo-priority is-important btn">
+                  <span class="todo-priority-text"> Важная задача</span>
+                </button>
+              </div>
+            </form>
+          </div>
+          <div class="list">
+            <!-- работает не так, как надо, лучше прописать сразу в js, либо через toggle 
+          <input class="status checkbox" type="checkbox" /> 
+          </div>
+          --></div>
+        </div>
       </div>
-      <div class="list">
-        <!-- работает не так, как надо, лучше прописать сразу в js, либо через toggle 
-        <input class="status checkbox" type="checkbox" /> -->
-      </div>
-    </div>
+    </main>
     <script defer src="js/todo.js"></script>
   </body>
 </html>

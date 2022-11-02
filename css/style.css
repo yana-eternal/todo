@@ -1,7 +1,17 @@
 /* база */
 body {
+    margin: 0;
+    padding: 0;
     background: rgb(6,0,102);
     background: linear-gradient(90deg, rgba(6,0,102,1) 0%, rgba(143,84,181,1) 35%, rgb(72, 134, 192) 79%, rgba(104,199,218,1) 100%);
+}
+/* для ценрования контента */
+.container {
+    max-width: 1140px;
+    margin: 0 auto;
+    width: 80%;
+    /* перенос слов*/
+    word-break: break-word;
 }
 .block {
     display: flex;
@@ -10,21 +20,19 @@ body {
     margin-top: 50px;
 }
 
+
+/* наполнение */
 /* панель */
 .control + * {
-    margin-top: 20px;
+    margin-top: 10px;
 }
-
 /* список */
-.list {
-    align-items: center;
-    text-align: center;
+.list { 
     font-weight: bold;
     color: whitesmoke;
 }
 /* важная задача */
 .list .is-important {
-    font-weight: bold;
     color: #FAFF00;
 }
 /* сама задача */
@@ -36,9 +44,8 @@ body {
    justify-content: center;
    font-weight: bold;
 }
-
 .new-task + *{
-    margin-top: 7px;
+    margin-top: 0px;
 }
 /* выполнено */
 .success {
@@ -47,6 +54,7 @@ body {
 .field {
     outline: none;
 }
+
 /* кнопки */
 .btn {
     transition: opacity 0.2s ease;
@@ -80,6 +88,7 @@ body {
 input, button{
     height: 4em;
 }
+
 
 /* адаптив */
 @media (max-width:600px) {
