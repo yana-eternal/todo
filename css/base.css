@@ -7,20 +7,31 @@ body {
     background: rgb(6,0,102);
     background: linear-gradient(90deg, rgba(6,0,102,1) 0%, rgba(143,84,181,1) 35%, rgb(72, 134, 192) 79%, rgba(104,199,218,1) 100%);
 }
-.block {
+.container {
+    max-width: 900px;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    word-break: break-all;
+}
+.block {    
     padding-top: 50px;
     padding-bottom: 50px;
 }
-.container {
-    max-width: 1140px;
-    margin: 0 auto;
-    width: 80%;
-    /* перенос слов */
-    word-break: break-all;
+.checkbox {
+    cursor: pointer;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.checkbox:hover {
+    transform: scale(1.2);
+    transition: ease-out;
 }
 
 
 /* наполнение */
+
+
 
 /* панель добавления */
 .control {
@@ -36,27 +47,37 @@ body {
 .todo-priority.btn{
     border-radius: .25rem;
     margin-left: 10px;
+    box-shadow: 0px 2px 4px -0.7px rgb(0 0 0 / 25%);
 }
 /* важная задача */
 .list .is-important {
-    color: #FAFF00;
+    color: #faff00d1;
 }
 .todo-priority.is-important {
     background-color: #faff00b5;
     /* opacity: 0.75; */
 }
+
+
 /* список задач */
+
+
 .list {
     font-weight: bold;
 }
-/* добавить цвет */
 /* одна задача */
 .new-task {
     display: flex;
-    flex-direction: row-reverse;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+    /* flex-direction: row-reverse; */
+    justify-content: start;
+    background-color: #f5f5f559;
+    border-radius: 12px;
+    padding: 7px;
+    width: 600px;
+}
+.text {
+    width: 450px;
+    overflow: hidden;
 }
 /* отступ между задачами */
 .new-task + *{
@@ -65,9 +86,15 @@ body {
 /* выполненная задача */
 .success {
 	text-decoration: line-through;
+    text-decoration-color: whitesmoke;
+    opacity: 85%;
+  
 }
 
-/* поле ввода */
+
+/* поле ввода, кнопки */
+
+
 .text-field {
     display: flex;
     border-radius: .25rem;
@@ -83,13 +110,14 @@ body {
     position: relative;
     z-index: 2;
 }
-  /* кнопка */
+/* кнопка */
 .btn {
     border-radius: .25rem;
     display: inline-block;
     font-weight: 400;
     line-height: 1.5;
-    background-color: #eee;
+    background-color:#c184e7;
+    /* background-color: #eee; */
     border: 1px solid #bdbdbd;
     padding: .375rem .75rem;
     font-size: 1rem;
@@ -97,6 +125,7 @@ body {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
     border-left-width: 0;
+    border: none;
 }
 /* наведение на кнопки */
 .btn:hover {
@@ -107,19 +136,15 @@ body {
     opacity: 0.9;
     background-color: #edf200b5;
 }
-
-
-.todo-priority-text {
-    opacity:  85%;
+.pin {
+    opacity: 0;
+    background: url(../img/pin.png) no-repeat;
+    background-size: contain;
+    width: 15px;
+    height: 15px;
+    transition: opacity .3s;
 }
-
-.add {
-    background-color: #c184e7;
-    border: none;
-
-}
-.todo-priority {
-    background-color:#c184e7;
-    border: none;
-    box-shadow: 0px 2px 4px -0.7px rgb(0 0 0 / 25%);
+.new-task:hover .pin{
+    opacity: 1;
+    transition: opacity .3s;
 }

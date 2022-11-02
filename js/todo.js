@@ -12,15 +12,22 @@ const priority = document.querySelector(".todo-priority");
 // создаем функцию, создающую таски //
 function createTask(value) {
   const task = document.createElement("div");
-  task.textContent = value;
   // добавляем класс для стилизации //
   task.classList.add("new-task");
+  const text = document.createElement("p");
+  text.classList.add("text");
+  text.textContent = value;
   // добавляем чекбокс //
   const checkbox = document.createElement("input");
   checkbox.setAttribute("type", "checkbox");
-  checkbox.classList.add("status");
+  checkbox.classList.add("status", "checkbox");
   task.append(checkbox);
+  task.append(text);
   checkbox.addEventListener("click", completeTask);
+  // добавляем пин //
+  const pin = document.createElement("button");
+  pin.classList.add("pin");
+  task.append(pin);
 
   return task;
 }
