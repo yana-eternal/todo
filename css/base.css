@@ -1,9 +1,17 @@
+/* переменные */
+:root {
+    --color-btn:#c184e7;
+    --color-btn-hover:#bc79e0;
+    --base-color-whitesmoke: whitesmoke;
+    --box-shadow-btn: 0px 2px 4px -0.7px rgb(0 0 0 / 25%);
+    --icon-size:20px;
+}
 /* база */
 body {
     font-family: 'Poppins', sans-serif;
     font-weight: 400;
     font-size: 18px;
-    color: whitesmoke;
+    color: var(--base-color-whitesmoke);
     background: rgb(6,0,102);
     background: linear-gradient(90deg, rgba(6,0,102,1) 0%, rgba(143,84,181,1) 35%, rgb(72, 134, 192) 79%, rgba(104,199,218,1) 100%);
 }
@@ -38,7 +46,6 @@ body {
     display: flex;
     justify-content: center;
     margin-top: 10px;
-
 }
 /* отступ */
 .control + * {
@@ -47,7 +54,7 @@ body {
 .todo-priority.btn{
     border-radius: .25rem;
     margin-left: 10px;
-    box-shadow: 0px 2px 4px -0.7px rgb(0 0 0 / 25%);
+    box-shadow: var(--box-shadow-btn);
 }
 /* важная задача */
 .list .is-important {
@@ -63,19 +70,23 @@ body {
 
 
 .list {
+    width: 600px;
     font-weight: bold;
 }
 /* одна задача */
 .new-task {
     display: flex;
-    /* flex-direction: row-reverse; */
     justify-content: start;
     background-color: #f5f5f559;
     border-radius: 12px;
     padding: 7px;
-    width: 600px;
 }
 .text {
+    /* ограничиваем текст для кнопок справа */
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
     width: 450px;
     overflow: hidden;
 }
@@ -86,7 +97,7 @@ body {
 /* выполненная задача */
 .success {
 	text-decoration: line-through;
-    text-decoration-color: whitesmoke;
+    text-decoration-color: var(--base-color-whitesmoke);
     opacity: 85%;
   
 }
@@ -102,7 +113,7 @@ body {
 .field {
     color: #212529;
     text-align: center;
-    background-color: whitesmoke;
+    background-color: var(--base-color-whitesmoke);
     opacity: 60%;
     border-radius: .25rem;
     border-top-right-radius: 0;
@@ -116,7 +127,7 @@ body {
     display: inline-block;
     font-weight: 400;
     line-height: 1.5;
-    background-color:#c184e7;
+    background-color: var(--color-btn);
     /* background-color: #eee; */
     border: 1px solid #bdbdbd;
     padding: .375rem .75rem;
@@ -130,21 +141,47 @@ body {
 /* наведение на кнопки */
 .btn:hover {
     opacity: 0.9;
-    background-color: #bc79e0;
+    background-color:var(--color-btn-hover);
 }
 .todo-priority.is-important:hover {
     opacity: 0.9;
     background-color: #edf200b5;
 }
+
+/* кнопки новой задачи */
+/* пин */
 .pin {
-    opacity: 0;
-    background: url(../img/pin.png) no-repeat;
+    background: url(../img/pin.png);
+}
+.pin:hover {
+    background: url(../img/pin_hover.png);
+}
+/* удаление */
+.new-task .del-btn {
+    background: url(../img/delete.png) no-repeat;
+    margin-left: 20px;
     background-size: contain;
-    width: 15px;
-    height: 15px;
+}
+.del-btn:hover {
+    background: url(../img/delete_hover.png);
+}
+.pin, .del-btn {
+    background-repeat: no-repeat;
+    opacity: 1;
+    margin-left: 40px;
+    background-size: contain;
+    height: var(--icon-size);
+    width: var(--icon-size);
     transition: opacity .3s;
+
 }
 .new-task:hover .pin{
     opacity: 1;
     transition: opacity .3s;
+}
+.pin:hover, .del-btn:hover {
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: var(--icon-size);    
+    height: var(--icon-size);
 }

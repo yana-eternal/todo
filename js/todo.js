@@ -28,7 +28,11 @@ function createTask(value) {
   const pin = document.createElement("button");
   pin.classList.add("pin");
   task.append(pin);
-
+  // удаление задачи //
+  const deleteButton = document.createElement("button");
+  deleteButton.classList.add("del-btn");
+  task.append(deleteButton);
+  deleteButton.addEventListener("click", deleteTask);
   return task;
 }
 // создаем функцию, добавляющую таски //
@@ -56,6 +60,12 @@ function completeTask(evt) {
   } else {
     target.parentElement.classList.remove("success");
   }
+}
+// удаление задачи //
+function deleteTask(event) {
+  const target = event.target;
+  const targetBox = target.parentElement;
+  targetBox.remove();
 }
 
 // обработчики //
