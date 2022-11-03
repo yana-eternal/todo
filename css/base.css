@@ -73,6 +73,7 @@ body {
     width: 600px;
     font-weight: bold;
 }
+
 /* одна задача */
 .new-task {
     display: flex;
@@ -147,8 +148,25 @@ body {
     opacity: 0.9;
     background-color: #edf200b5;
 }
+/* превышение символов */
+.disabled-btn{
+    background-color: #f5f5f559;
+  }
+.disabled-btn:hover{
+    background-color: #f5f5f559;
+}
+.warning-none {
+    margin-top: 15px;
+    color: #faff00d1;
+    display: none;
+    font-weight: bolder;
+}
+.warning {
+    display: block;
+}
 
-/* кнопки новой задачи */
+
+/* иконки задач */
 /* пин */
 .pin {
     background: url(../img/pin.png);
