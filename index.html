@@ -17,17 +17,18 @@
           <div class="control">
             <form action="#" class="todo-form">
               <div class="text-field">
-                <input class="field text-field__input" type="text" placeholder="Добавьте задачу" required />
+                <button type="button" class="todo-priority is-important btn">Important task</button>
+                <input class="field text-field__input" type="text" id="item" placeholder="Enter your task" required />
                 <button class="add btn" type="submit">+</button>
-                <button type="button" class="todo-priority is-important btn">Важная задача</button>
               </div>
-              <div class="warning-none">Недопустимое количество символов!</div>
+              <div class="warning-none">number of characters exceeded!</div>
             </form>
           </div>
           <div class="list"></div>
+          <button class="clear">clear all bruh</button>
         </div>
       </div>
     </main>
-    <script defer src="js/todo.js"></script>
+    <script defer src="/js/todo2.js"></script>
   </body>
 </html>
