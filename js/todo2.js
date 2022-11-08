@@ -1,7 +1,13 @@
 "use strict";
 // local storage
 // const tasks = localStorage.getItem("tasks");
-let itemsArray = localStorage.getItem("tasks") ? JSON.parse(localStorage.getItem("tasks")) : []; //создаем массив и проверяем на наличие lS
+let itemsArray;
+if (localStorage.getItem("tasks")) {
+  itemsArray = JSON.parse(localStorage.getItem("tasks"));
+} else {
+  itemsArray = [];
+}
+// let itemsArray = localStorage.getItem("tasks") ? JSON.parse(localStorage.getItem("tasks")) : []; //создаем массив и проверяем на наличие lS
 localStorage.setItem("tasks", JSON.stringify(itemsArray)); // конвертирует массив в строку
 let data = JSON.parse(localStorage.getItem("tasks")); // конвертируем строки в нужный формат
 
@@ -93,8 +99,8 @@ function deleteTask(evt) {
 }
 
 function removeFromLS(textContent) {
-  const newTasksList = itemsArray.filter((text) => text !== textContent);
-  localStorage.setItem("tasks", JSON.stringify(newTasksList));
+  itemsArray.splice(itemsArray.indexOf(textContent));
+  localStorage.setItem("tasks", JSON.stringify(itemsArray));
 }
 
 // меняет класc задачи
