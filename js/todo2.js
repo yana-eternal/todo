@@ -1,48 +1,38 @@
 "use strict";
 // local storage
-// const tasks = localStorage.getItem("tasks");
-let itemsArray;
-if (localStorage.getItem("tasks")) {
-  itemsArray = JSON.parse(localStorage.getItem("tasks"));
-} else {
-  itemsArray = [];
-}
-// let itemsArray = localStorage.getItem("tasks") ? JSON.parse(localStorage.getItem("tasks")) : []; //создаем массив и проверяем на наличие lS
+const itemsArray = localStorage.getItem("tasks") ? JSON.parse(localStorage.getItem("tasks")) : []; //создаем массив и проверяем на наличие lS
 localStorage.setItem("tasks", JSON.stringify(itemsArray)); // конвертирует массив в строку
-let data = JSON.parse(localStorage.getItem("tasks")); // конвертируем строки в нужный формат
+const data = JSON.parse(localStorage.getItem("tasks")); // конвертируем строки в нужный формат
 
-// объявления переменынх
-const field = document.querySelector(".field");
-const addBtn = document.querySelector(".add");
-const clearBtn = document.querySelector(".clear");
-const list = document.querySelector(".list");
-const form = document.querySelector(".todo-form");
-const priority = document.querySelector(".todo-priority");
-const warning = document.querySelector(".warning-none");
+// variable declaration
+const field = document.querySelector(".field"); //input text
+const addBtn = document.querySelector(".add"); // button
+const clearBtn = document.querySelector(".clear"); // button
+const list = document.querySelector(".list"); // task list
+const form = document.querySelector(".todo-form"); // form
+const priority = document.querySelector(".todo-priority"); // class important task
+const warning = document.querySelector(".warning-none"); // class warning length
 
-// база
+// function
 
-// создание таски
-function createTask(value) {
+const createTask = (value) => {
   const task = document.createElement("div");
   task.classList.add("new-task");
   const text = document.createElement("p");
   text.classList.add("text");
-  // const textId = (text.textContent = value);
-  // text.setAttribute("id", textId);
   text.textContent = value;
 
-  // добавляем чекбокс
+  // checkbox
   const checkbox = document.createElement("input");
   checkbox.setAttribute("type", "checkbox");
   checkbox.classList.add("status", "checkbox");
   checkbox.addEventListener("click", completeTask);
 
-  // пин
+  // pin
   const pin = document.createElement("button");
   pin.classList.add("pin");
 
-  // удаление задачи
+  // delete
   const deleteButton = document.createElement("button");
   deleteButton.classList.add("del-btn");
   deleteButton.addEventListener("click", deleteTask);
@@ -53,11 +43,9 @@ function createTask(value) {
   task.append(deleteButton);
 
   return task;
-}
+};
 
-// добавление таски
-
-function renderTask(taskText) {
+const renderTask = (taskText) => {
   const newTask = createTask(taskText);
   if (priority.classList.contains("is-important")) {
     newTask.classList.add("is-important");
@@ -66,56 +54,39 @@ function renderTask(taskText) {
   }
 
   list.appendChild(newTask);
-}
+};
 
-form.addEventListener("submit", (e) => {
-  e.preventDefault();
-  itemsArray.push(field.value);
-  localStorage.setItem("tasks", JSON.stringify(itemsArray));
-  renderTask(field.value);
-  field.value = "";
-});
-
-data.forEach((task) => {
-  renderTask(task);
-});
-
-// комплит делит
-function completeTask(evt) {
-  const { target } = evt; // короткая запись const target = evt.target
+const completeTask = (e) => {
+  const { target } = e; // короткая запись const target = evt.target
   if (target.checked) {
     target.parentElement.classList.add("success");
   } else {
     target.parentElement.classList.remove("success");
   }
-}
-// удаление таски
-function deleteTask(evt) {
-  const { target } = evt;
+};
+
+const deleteTask = (e) => {
+  const { target } = e;
   const targetBox = target.parentElement;
   const textContent = targetBox.children[1].textContent;
   removeFromLS(textContent);
   targetBox.remove();
-}
-
-function removeFromLS(textContent) {
+};
+const removeFromLS = (textContent) => {
   itemsArray.splice(itemsArray.indexOf(textContent), 1);
   localStorage.setItem("tasks", JSON.stringify(itemsArray));
-}
+};
 
-// меняет класc задачи
-priority.addEventListener("click", toggle);
-function toggle() {
+const toggle = () => {
   priority.classList.toggle("is-important");
   if (priority.classList.contains("is-important")) {
     priority.textContent = "Important task";
   } else {
     priority.textContent = "Сommon task";
   }
-}
+};
 
-// огранчение колво символов
-field.oninput = function () {
+const maxLength = () => {
   if (field.value.length > 80) {
     addBtn.classList.add("disabled-btn");
     addBtn.disabled = true;
@@ -127,9 +98,26 @@ field.oninput = function () {
   }
 };
 
-// clearBtn.addEventListener("click", function () {
-//   localStorage.clear();
-//   while (list.firstChild) {
-//     list.removeChild(list.firstChild);
-//   }
-// });
+const clearTasks = () => {
+  localStorage.clear();
+  while (list.firstChild) {
+    list.removeChild(list.firstChild);
+  }
+};
+// Listener
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  itemsArray.push(field.value);
+  localStorage.setItem("tasks", JSON.stringify(itemsArray));
+  renderTask(field.value);
+  field.value = "";
+});
+data.forEach((task) => {
+  renderTask(task);
+});
+
+priority.addEventListener("click", toggle);
+
+field.addEventListener("input", maxLength);
+
+clearBtn.addEventListener("click", clearTasks);
