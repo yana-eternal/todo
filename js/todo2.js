@@ -99,7 +99,7 @@ function deleteTask(evt) {
 }
 
 function removeFromLS(textContent) {
-  itemsArray.splice(itemsArray.indexOf(textContent));
+  itemsArray.splice(itemsArray.indexOf(textContent), 1);
   localStorage.setItem("tasks", JSON.stringify(itemsArray));
 }
 
