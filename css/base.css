@@ -62,7 +62,6 @@ body {
 }
 .todo-priority.is-important {
     background-color: #faff00b5;
-    /* opacity: 0.75; */
 }
 
 
@@ -70,6 +69,8 @@ body {
 
 
 .list {
+    display: flex;
+    flex-direction: column;
     width: 600px;
     font-weight: bold;
 }
@@ -92,15 +93,18 @@ body {
     overflow: hidden;
 }
 /* отступ между задачами */
-.new-task + *{
+.new-task {
     margin-top: 1.2vw;
 }
+
+
 /* выполненная задача */
 .success {
 	text-decoration: line-through;
     text-decoration-color: var(--base-color-whitesmoke);
     opacity: 85%;
-  
+    order: 9999;
+    
 }
 
 
@@ -164,16 +168,28 @@ body {
 .warning {
     display: block;
 }
-
+/* удаление всех */
+.clear {
+    border-radius: .25rem;
+    margin-left: 20px;
+    background-color: #e85858;
+}
+.clear:hover {
+    background-color:#e85858ed;
+}
 
 /* иконки задач */
 /* пин */
 .pin {
     background: url(../img/pin.png);
 }
-.pin:hover {
+.pin:hover, .p {
     background: url(../img/pin_hover.png);
 }
+.pinned {
+    order: -1;
+}
+
 /* удаление */
 .new-task .del-btn {
     background: url(../img/delete.png) no-repeat;
@@ -193,6 +209,8 @@ body {
     transition: opacity .3s;
 
 }
+
+
 .new-task:hover .pin{
     opacity: 1;
     transition: opacity .3s;
@@ -205,15 +223,3 @@ body {
 }
 
 
-@media (max-width:600px) {
-    .text-field {
-     display: flex;
-     flex-direction: column;
-     align-items: center;
-     gap: 0.25rem;
-     font-weight: bold;
-    }
-   input,button {
-     height: 2em;
-   }
- }

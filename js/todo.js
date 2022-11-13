@@ -8,6 +8,7 @@ const list = document.querySelector(".list"); // task list
 const form = document.querySelector(".todo-form"); // form
 const priority = document.querySelector(".todo-priority"); // class important task
 const warning = document.querySelector(".warning-none"); // class warning length
+const tasks = document.querySelector(".new-task");
 
 // function
 
@@ -18,7 +19,7 @@ const createTask = (value) => {
   const pin = document.createElement("button");
   const deleteButton = document.createElement("button");
 
-  task.classList.add("new-task");
+  task.classList.add("new-task", "unpinned");
   text.classList.add("text");
   text.textContent = value;
 
@@ -26,7 +27,8 @@ const createTask = (value) => {
   checkbox.classList.add("checkbox");
   checkbox.addEventListener("click", completeTask);
 
-  pin.classList.add("pin");
+  pin.classList.add("pin", "up");
+  pin.addEventListener("click", pinTask);
 
   deleteButton.classList.add("del-btn");
   deleteButton.addEventListener("click", deleteTask);
@@ -75,18 +77,37 @@ const completeTask = (event) => {
   saveTasks();
 };
 
+const pinTask = (event) => {
+  const pinned = event.target;
+  const pinBox = pinned.parentElement;
+
+  pinBox.classList.toggle("unpinned");
+  pinBox.classList.toggle("pinned");
+
+  // const pin = document.querySelectorAll(".pin");
+
+  pinned.classList.toggle("up");
+  pinned.classList.toggle("p");
+
+  saveTasks();
+};
+
 const deleteTask = (event) => {
   const target = event.target;
   const targetBox = target.parentElement;
+
   targetBox.remove();
 
   saveTasks();
 };
 
 const clearTasks = () => {
-  localStorage.clear();
-  while (list.firstChild) {
-    list.removeChild(list.firstChild);
+  const askQuestion = confirm("Clear all tasks?");
+  if (askQuestion) {
+    localStorage.clear();
+    while (list.firstChild) {
+      list.removeChild(list.firstChild);
+    }
   }
 };
 
@@ -110,6 +131,8 @@ const saveTasks = () => {
     content: task.textContent,
     status: task.querySelector(".checkbox").checked,
     important: task.classList.contains("is-important"),
+    pinTask: task.classList.contains("pinned"),
+    pin: task.querySelector(".pin").classList.contains("p"),
   }));
 
   localStorage.setItem("tasks", JSON.stringify(data));
@@ -130,6 +153,14 @@ const loadTasks = () => {
       newTask.querySelector(".checkbox").checked = true;
     }
 
+    if (task.pinTask) {
+      newTask.classList.add("pinned");
+    }
+
+    if (task.pin) {
+      newTask.querySelector(".pin").classList.add("p");
+    }
+
     list.appendChild(newTask);
   });
 };
@@ -138,5 +169,4 @@ priority.addEventListener("click", toggleClass);
 form.addEventListener("submit", addTask);
 clearBtn.addEventListener("click", clearTasks);
 field.addEventListener("input", maxLength);
-
 document.addEventListener("DOMContentLoaded", loadTasks);
