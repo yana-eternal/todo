@@ -138,4 +138,5 @@ priority.addEventListener("click", toggleClass);
 form.addEventListener("submit", addTask);
 clearBtn.addEventListener("click", clearTasks);
 field.addEventListener("input", maxLength);
+
 document.addEventListener("DOMContentLoaded", loadTasks);
