@@ -189,7 +189,9 @@ body {
 .pinned {
     order: -1;
 }
-
+.success {
+    order: 9999;
+}
 /* удаление */
 .new-task .del-btn {
     background: url(../img/delete.png) no-repeat;
