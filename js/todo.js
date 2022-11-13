@@ -44,9 +44,9 @@ const createTask = (value) => {
 const toggleClass = () => {
   priority.classList.toggle("is-important");
   if (priority.classList.contains("is-important")) {
-    priority.textContent = "Важная задача";
+    priority.textContent = "Important task";
   } else {
-    priority.textContent = "Обычная задача";
+    priority.textContent = "Common task";
   }
 };
 
