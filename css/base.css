@@ -12,19 +12,18 @@ body {
     font-weight: 400;
     font-size: 18px;
     color: var(--base-color-whitesmoke);
-    background: rgb(6,0,102);
     background: linear-gradient(90deg, rgba(6,0,102,1) 0%, rgba(143,84,181,1) 35%, rgb(72, 134, 192) 79%, rgba(104,199,218,1) 100%);
 }
 .container {
-    max-width: 900px;
-    display: flex;
-    justify-content: center;
+    max-width: 1000px;
+    width: 80%;
     margin: 0 auto;
     word-break: break-all;
 }
-.block {    
-    padding-top: 50px;
-    padding-bottom: 50px;
+.container-column {   
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .checkbox {
     cursor: pointer;
@@ -44,13 +43,34 @@ body {
 /* панель добавления */
 .control {
     display: flex;
-    justify-content: center;
-    margin-top: 10px;
+    margin-top: 50px;
 }
 /* отступ */
 .control + * {
     margin-top: 30px;
 }
+
+/* поле ввода, кнопки */
+
+.field {
+    color: #212529;
+    text-align: center;
+    background-color: var(--base-color-whitesmoke);
+    opacity: 60%;
+    border-radius: .25rem;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    position: relative;
+    z-index: 2;
+}
+.todo-form {
+    display: flex;
+}
+
+
+
+
+
 .todo-priority.btn{
     border-radius: .25rem;
     margin-right: 15px;
@@ -71,7 +91,7 @@ body {
 .list {
     display: flex;
     flex-direction: column;
-    width: 600px;
+    max-width: 500px;
     font-weight: bold;
 }
 
@@ -82,11 +102,12 @@ body {
     background-color: #f5f5f559;
     border-radius: 12px;
     padding: 7px;
+
 }
 .text {
     /* ограничиваем текст для кнопок справа */
     display: -webkit-box;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
     overflow: hidden;
     width: 450px;
@@ -108,24 +129,7 @@ body {
 }
 
 
-/* поле ввода, кнопки */
 
-
-.text-field {
-    display: flex;
-    border-radius: .25rem;
-  }
-.field {
-    color: #212529;
-    text-align: center;
-    background-color: var(--base-color-whitesmoke);
-    opacity: 60%;
-    border-radius: .25rem;
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-    position: relative;
-    z-index: 2;
-}
 /* кнопка */
 .btn {
     border-radius: .25rem;
@@ -189,9 +193,7 @@ body {
 .pinned {
     order: -1;
 }
-.success {
-    order: 9999;
-}
+
 /* удаление */
 .new-task .del-btn {
     background: url(../img/delete.png) no-repeat;
@@ -225,3 +227,49 @@ body {
 }
 
 
+@media (max-width:600px) {
+    .list {
+        max-width: 270px;
+        font-size: 15px;
+  
+    }
+    .control {
+        margin-top: 15px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+    }
+    .field {
+        width: 130px;
+    }
+    .todo-form {
+        height: 40px;
+        font-size: 16px;
+        margin-top: 20px;
+    }
+    .clear {
+        margin-top: 20px;
+    }
+    .btn {
+        font-size: 13px;
+    }
+    .todo-priority {
+     
+
+        height: 60px;
+        width: 80px;
+        margin-top: 0;
+    }
+    .input {
+        margin-top: 10px;
+    }
+    .pin, .del-btn {
+        width: 3rem;
+    }
+    .pin:hover, .del-btn:hover {
+        width: 3rem;  
+    }
+    
+   
+}

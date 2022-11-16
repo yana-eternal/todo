@@ -13,24 +13,24 @@
   <body>
     <main>
       <div class="container">
-        <div class="block">
+        <div class="container-column">
           <div class="control">
             <form action="#" class="todo-form">
-              <div class="text-field">
-                <button type="button" class="todo-priority is-important btn">Important task</button>
-                <input
-                  class="field text-field__input"
-                  type="text"
-                  id="item"
-                  placeholder="Enter your task"
-                  required
-                />
-                <button class="add btn" type="submit">+</button>
-              </div>
+              <button type="button" class="todo-priority is-important btn">Important task</button>
+              <input
+                class="field input"
+                type="text"
+                id="item"
+                placeholder="Enter your task"
+                required
+              />
+              <button class="add btn input" type="submit">+</button>
               <div class="warning-none">Maximum number of characters exceeded!</div>
             </form>
-            <button class="clear btn">clear all bruh</button>
+            <button class="clear btn">clear all</button>
           </div>
+
+          <!-- список -->
           <div class="list"></div>
         </div>
       </div>
