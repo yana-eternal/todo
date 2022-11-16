@@ -120,7 +120,7 @@ body {
 
 
 /* выполненная задача */
-.success {
+.list .success {
 	text-decoration: line-through;
     text-decoration-color: var(--base-color-whitesmoke);
     opacity: 85%;
