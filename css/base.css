@@ -89,6 +89,7 @@ body {
 
 
 .list {
+    margin-top: 20px;
     display: flex;
     flex-direction: column;
     max-width: 500px;
@@ -171,6 +172,7 @@ body {
 }
 .warning {
     display: block;
+    margin-bottom: 0;
 }
 /* удаление всех */
 .clear {
@@ -226,9 +228,9 @@ body {
     height: var(--icon-size);
 }
 
-
 @media (max-width:600px) {
     .list {
+        margin-top: 10px;
         max-width: 270px;
         font-size: 15px;
   
@@ -238,7 +240,7 @@ body {
         display: flex;
         flex-direction: column;
         align-items: center;
-
+        margin-top: 10px;
     }
     .field {
         width: 130px;
@@ -251,7 +253,7 @@ body {
     .clear {
         margin-top: 20px;
     }
-    .btn {
+    .btn, .warning {
         font-size: 13px;
     }
     .todo-priority {

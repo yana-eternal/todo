@@ -111,7 +111,7 @@ const clearTasks = () => {
   }
 };
 
-const maxLength = () => {
+const validateField = () => {
   if (field.value.length > 80) {
     addBtn.classList.add("disabled-btn");
     addBtn.disabled = true;
@@ -168,5 +168,5 @@ const loadTasks = () => {
 priority.addEventListener("click", toggleClass);
 form.addEventListener("submit", addTask);
 clearBtn.addEventListener("click", clearTasks);
-field.addEventListener("input", maxLength);
+field.addEventListener("input", validateField);
 document.addEventListener("DOMContentLoaded", loadTasks);
